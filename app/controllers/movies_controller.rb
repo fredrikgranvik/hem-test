@@ -12,6 +12,10 @@ class MoviesController < ApplicationController
     uri.query = URI.encode_www_form(parameters)
 
     res = Net::HTTP.get_response(uri)
-    render :json => res.body if res.is_a?(Net::HTTPSuccess)
+
+    respond_to do |format|
+      format.json { render :json => res.body }
+      format.html
+    end
   end
 end

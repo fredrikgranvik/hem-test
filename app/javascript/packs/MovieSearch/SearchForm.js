@@ -11,7 +11,10 @@ const SearchForm = () => {
 
     const query = inputValue;
 
-    fetch("/search/" + query)
+    fetch("/search/" + query, {
+      method: "GET",
+      headers: new Headers({ "content-type": "application/json" }),
+    })
       .then((res) => res.json())
       .then((data) => {
         context.setResult(data);
