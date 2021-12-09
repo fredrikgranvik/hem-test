@@ -45,6 +45,16 @@ export const SearchInput = css`
   position: absolute;
   outline: none;
 `;
+export const SearchType = css`
+  border: none;
+  position: absolute;
+  right: 220px;
+  padding: 1.5rem;
+  font-size: 1vw;
+  border-left: 1px solid #ccc;
+  background: none;
+  outline: none;
+`;
 export const YearInput = css`
   width: 5vw;
   padding: 1.6rem;
@@ -73,7 +83,7 @@ export const searchResult = css`
   width: auto;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 52px;
+  width: 100%;
 
   h2 {
     flex: 0 0 100%;
@@ -81,6 +91,14 @@ export const searchResult = css`
     border-bottom: 2px solid #ccc;
     margin: 0;
   }
+`;
+
+export const ErrorMessage = css`
+  margin: auto;
+  width: 42vw;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 40px;
 `;
 
 export const pagination = css`
@@ -95,8 +113,8 @@ export const page = css`
 `;
 export const SearchItem = styled.div`
   background-color: #eee;
-  flex: 1 1 15%;
-  margin: 10px;
+  flex: 1 1 18%;
+  margin: 1%;
   flex-direction: column;
   display: flex;
   flex-grow: 0;

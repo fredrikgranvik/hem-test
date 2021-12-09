@@ -4,6 +4,7 @@ import {
   SearchArea,
   searchForm,
   SearchInput,
+  SearchType,
   SubmitSearch,
   YearInput,
 } from "./MovieSearch.css";
@@ -14,11 +15,12 @@ const SearchForm = () => {
 
   const [title, setTitleQuery] = useState("");
   const [year, setYearQuery] = useState("");
+  const [type, setMovieType] = useState("");
 
   const submitForm = (e) => {
     e.preventDefault();
 
-    fetch("/search/" + title + "/" + year, {
+    fetch("/search/" + title + "/" + type + "/" + year, {
       method: "GET",
       headers: new Headers({ "content-type": "application/json" }),
     })
@@ -39,6 +41,15 @@ const SearchForm = () => {
           placeholder="Search for title..."
           onChange={(e) => setTitleQuery(e.target.value)}
         />
+        <select
+          className={SearchType}
+          name="searchTtype"
+          onChange={(e) => setMovieType(e.target.value)}
+        >
+          <option value="movie">Movie</option>
+          <option value="series">Series</option>
+          <option value="episode">Episode</option>
+        </select>
         <input
           className={YearInput}
           type="text"

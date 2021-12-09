@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AppContext from "./AppContext";
 import MovieIcon from "./MovieIcon";
 import {
+  ErrorMessage,
   Image,
   SearchItem,
   searchResult,
@@ -11,11 +12,7 @@ import {
 import Pagination from "./Pagination";
 
 const checkImage = (poster) => {
-  if (poster == "N/A") {
-    return <MovieIcon />;
-  } else {
-    return <img src={poster} />;
-  }
+  return poster == "N/A" ? <MovieIcon /> : <img src={poster} />;
 };
 
 const SearchResult = () => {
@@ -23,6 +20,10 @@ const SearchResult = () => {
 
   return (
     <section className={searchResult}>
+      {context.result?.Error && (
+        <div className={ErrorMessage}>{context.result?.Error}</div>
+      )}
+
       {context.result?.Search && (
         <>
           <h2>Resultat - (total results: {context.result.totalResults})</h2>

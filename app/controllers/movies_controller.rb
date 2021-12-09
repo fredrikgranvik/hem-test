@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
     title = params[:search]
     year = params[:year]
     page =  params[:page]
+    type =  params[:type]
 
     return nil if !title
 
@@ -15,12 +16,15 @@ class MoviesController < ApplicationController
       apikey: Rails.application.config.omdb_key,
       s: title,
       y: year,
-      page: page
+      page: page,
+      type: type,
+      plot: "short"
     }
     uri.query = URI.encode_www_form(parameters)
 
     res = Net::HTTP.get_response(uri)
-    @result = res.body
+
+    @result = res.is_a?(Net::HTTPSuccess) ? res.body : {error: "no result"}
 
     respond_to do |format|
       format.json { render :json => @result }
