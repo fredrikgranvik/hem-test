@@ -3,12 +3,22 @@ class MoviesController < ApplicationController
   end
 
   def search
-    query = params[:search]
 
-    return nil if !query
+    title = params[:search]
+    year = params[:year]
+    page =  params[:page]
+
+    byebug
+
+    return nil if !title
 
     uri = URI(Rails.application.config.omdb_url)
-    parameters = { :apikey => Rails.application.config.omdb_key, :s => query }
+    parameters = {
+      apikey: Rails.application.config.omdb_key,
+      s: title,
+      y: year,
+      page: page
+    }
     uri.query = URI.encode_www_form(parameters)
 
     res = Net::HTTP.get_response(uri)

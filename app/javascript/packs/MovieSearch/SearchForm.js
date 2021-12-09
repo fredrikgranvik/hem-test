@@ -1,20 +1,32 @@
 import React, { useContext, useState } from "react";
 import AppContext from "./AppContext";
+import {
+  searchForm,
+  SearchInput,
+  SubmitSearch,
+  YearInput,
+} from "./MovieSearch.css";
 
 const SearchForm = () => {
   const context = useContext(AppContext);
 
-  const [inputValue, setInputValue] = useState("");
+  const [title, setTitleQuery] = useState("");
+  const [year, setYearQuery] = useState("");
 
   const submitForm = (e) => {
     e.preventDefault();
 
-    const query = inputValue;
-
-    fetch("/search/" + query, {
-      method: "GET",
-      headers: new Headers({ "content-type": "application/json" }),
-    })
+    fetch(
+      "/search/" +
+        new URLSearchParams({
+          title: title,
+          year: year,
+        }),
+      {
+        method: "GET",
+        headers: new Headers({ "content-type": "application/json" }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         context.setResult(data);
@@ -22,15 +34,24 @@ const SearchForm = () => {
   };
 
   return (
-    <form onSubmit={(e) => submitForm(e)}>
+    <form className={searchForm} onSubmit={(e) => submitForm(e)}>
       <input
+        className={SearchInput}
         type="search"
-        value={inputValue}
+        value={title}
         name="searchQuery"
-        placeholder="Search for movie or series... fe. Title, Year.."
-        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Search for title..."
+        onChange={(e) => setTitleQuery(e.target.value)}
       />
-      <button>Submit</button>
+      <input
+        className={YearInput}
+        type="text"
+        value={year}
+        name="yearQuery"
+        placeholder="fe. 1977"
+        onChange={(e) => setYearQuery(e.target.value)}
+      />
+      <button className={SubmitSearch}>Submit</button>
     </form>
   );
 };
