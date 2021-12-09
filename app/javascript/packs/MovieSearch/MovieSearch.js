@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppContext from "./AppContext";
+import { SearchWidget } from "./MovieSearch.css";
 import SearchForm from "./SearchForm";
 import SearchResult from "./SearchResult";
 
@@ -18,7 +19,7 @@ const MovieSearch = () => {
 
   return (
     <AppContext.Provider value={{ result, setResult }}>
-      <article>
+      <article className={SearchWidget}>
         <SearchForm />
         <SearchResult />
       </article>
