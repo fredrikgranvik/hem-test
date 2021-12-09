@@ -5,6 +5,6 @@ import MovieSearch from "./MovieSearch/MovieSearch";
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <MovieSearch />,
-    document.body.appendChild(document.createElement("div"))
+    document.body.appendChild(document.createElement("main"))
   );
 });

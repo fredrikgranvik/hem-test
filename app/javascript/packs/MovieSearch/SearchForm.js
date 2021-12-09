@@ -25,8 +25,17 @@ const SearchForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        context.setResult(data);
+        handleResponse(data);
       });
+  };
+
+  const handleResponse = (data) => {
+    context.setResult(data);
+    updatePath();
+  };
+
+  const updatePath = () => {
+    window.history.replaceState({}, "", `/search/${title}/${type}/${year}`);
   };
 
   return (
