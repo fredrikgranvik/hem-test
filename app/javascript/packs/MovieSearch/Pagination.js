@@ -8,9 +8,7 @@ const Pagination = () => {
   const itemsPerPage = 10;
   const total = Math.ceil(context.result.totalResults / itemsPerPage);
 
-  debugger;
-
-  if (total < 1) return null;
+  if (total < 2) return null;
 
   return (
     <nav className={pagination}>

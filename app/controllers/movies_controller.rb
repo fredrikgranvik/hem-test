@@ -8,8 +8,6 @@ class MoviesController < ApplicationController
     year = params[:year]
     page =  params[:page]
 
-    byebug
-
     return nil if !title
 
     uri = URI(Rails.application.config.omdb_url)

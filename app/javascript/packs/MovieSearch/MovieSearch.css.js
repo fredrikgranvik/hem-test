@@ -6,15 +6,34 @@ export const SearchWidget = css`
   align-items: center;
   flex-direction: column;
 `;
-
-export const searchForm = css`
+export const SearchArea = css`
   width: 100%;
-  background: linear-gradient(0deg, #ccc 0%, #eee 100%);
   min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+`;
+
+export const searchForm = css`
+  position: relative;
+  width: 42vw;
 `;
 export const SearchInput = css`
   width: 42vw;
@@ -23,17 +42,29 @@ export const SearchInput = css`
   border-radius: 40px;
   box-shadow: 0 0 0 15px rgb(0 0 0 / 30%);
   border: none;
+  position: absolute;
 `;
 export const YearInput = css`
-  width: 1vw;
+  width: 5vw;
   padding: 1.6rem;
   font-size: 1vw;
-  border-radius: 40px;
-  box-shadow: 0 0 0 15px rgb(0 0 0 / 30%);
   border: none;
+  position: absolute;
+  right: 70px;
+  border-left: 1px solid #ccc;
+  background: none;
 `;
 export const SubmitSearch = css`
-  background: #060;
+  position: absolute;
+  right: 10px;
+  border: none;
+  background: none;
+  padding: 15px;
+
+  svg {
+    width: 40px;
+    fill: #ccc;
+  }
 `;
 export const searchResult = css`
   width: auto;
