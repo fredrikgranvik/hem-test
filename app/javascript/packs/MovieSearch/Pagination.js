@@ -12,11 +12,15 @@ const Pagination = () => {
 
   return (
     <nav className={pagination}>
-      {[...Array(total)].map((e, i) => (
-        <a href="#" className={page} key={i}>
-          {i}
-        </a>
-      ))}
+      {[...Array(total)].map((e, i) => {
+        const page = ++i;
+
+        return (
+          <a href={"?page=" + page} className={page} key={i}>
+            {page}
+          </a>
+        );
+      })}
     </nav>
   );
 };

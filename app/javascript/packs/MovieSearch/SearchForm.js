@@ -44,7 +44,7 @@ const SearchForm = () => {
           type="text"
           value={year}
           name="yearQuery"
-          placeholder="fe. 1977"
+          placeholder="Year"
           onChange={(e) => setYearQuery(e.target.value)}
         />
         <button className={SubmitSearch}>

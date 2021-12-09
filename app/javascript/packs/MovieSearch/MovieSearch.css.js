@@ -43,6 +43,7 @@ export const SearchInput = css`
   box-shadow: 0 0 0 15px rgb(0 0 0 / 30%);
   border: none;
   position: absolute;
+  outline: none;
 `;
 export const YearInput = css`
   width: 5vw;
@@ -53,7 +54,9 @@ export const YearInput = css`
   right: 70px;
   border-left: 1px solid #ccc;
   background: none;
+  outline: none;
 `;
+
 export const SubmitSearch = css`
   position: absolute;
   right: 10px;
@@ -103,9 +106,18 @@ export const Image = styled.div`
   width: 100%;
   height: 300px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #eee;
 
   img {
     width: 100%;
+  }
+  svg {
+    width: 80px;
+    fill: #ccc;
   }
 `;
 

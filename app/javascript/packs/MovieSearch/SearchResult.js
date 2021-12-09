@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import AppContext from "./AppContext";
+import MovieIcon from "./MovieIcon";
 import {
   Image,
   SearchItem,
@@ -8,6 +9,14 @@ import {
   Year,
 } from "./MovieSearch.css";
 import Pagination from "./Pagination";
+
+const checkImage = (poster) => {
+  if (poster == "N/A") {
+    return <MovieIcon />;
+  } else {
+    return <img src={poster} />;
+  }
+};
 
 const SearchResult = () => {
   const context = useContext(AppContext);
@@ -22,9 +31,7 @@ const SearchResult = () => {
           {context.result.Search.map((m, i) => {
             return (
               <SearchItem key={m + i}>
-                <Image>
-                  <img src={m.Poster} alt={m.Title + "-" + m.imdbID} />
-                </Image>
+                <Image>{checkImage(m.Poster)}</Image>
                 <Title>{m.Title}</Title>
                 <Year>{m.Year}</Year>
               </SearchItem>
