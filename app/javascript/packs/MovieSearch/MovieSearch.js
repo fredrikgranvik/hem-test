@@ -10,7 +10,7 @@ const MovieSearch = () => {
     const initialStateHolder = document.getElementById(
       "MovieSearchInitialState"
     );
-    if (initialStateHolder) {
+    if (initialStateHolder && initialStateHolder?.dataset?.initialState != "") {
       const state = JSON.parse(initialStateHolder.dataset.initialState);
       setResult(state);
     }

@@ -8,7 +8,7 @@ const SearchResult = () => {
     <section>
       {context.result?.Search && (
         <>
-          <h2>Resultat</h2>
+          <h2>Resultat - (total results: {context.result.totalResults})</h2>
           {context.result.Search.map((m, i) => {
             return (
               <div key={m + i}>
