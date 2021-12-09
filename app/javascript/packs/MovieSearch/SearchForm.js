@@ -12,10 +12,9 @@ import SubmitIcon from "./SubmitIcon.js";
 
 const SearchForm = () => {
   const context = useContext(AppContext);
-
-  const [title, setTitleQuery] = useState("");
-  const [year, setYearQuery] = useState("");
-  const [type, setMovieType] = useState("");
+  const title = context.title;
+  const year = context.year;
+  const type = context.type;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -39,12 +38,13 @@ const SearchForm = () => {
           value={title}
           name="searchQuery"
           placeholder="Search for title..."
-          onChange={(e) => setTitleQuery(e.target.value)}
+          onChange={(e) => context.setTitleQuery(e.target.value)}
         />
         <select
           className={SearchType}
           name="searchTtype"
-          onChange={(e) => setMovieType(e.target.value)}
+          defaultValue={type}
+          onChange={(e) => context.setMovieType(e.target.value)}
         >
           <option value="movie">Movie</option>
           <option value="series">Series</option>
@@ -56,7 +56,7 @@ const SearchForm = () => {
           value={year}
           name="yearQuery"
           placeholder="Year"
-          onChange={(e) => setYearQuery(e.target.value)}
+          onChange={(e) => context.setYearQuery(e.target.value)}
         />
         <button className={SubmitSearch}>
           <SubmitIcon />

@@ -102,15 +102,31 @@ export const ErrorMessage = css`
 `;
 
 export const pagination = css`
-  background-color: aliceblue;
   flex: 0 0 100%;
   padding: 20px 50px;
   border-bottom: 2px solid #ccc;
   margin: 0;
+  flex-direction: row;
+  display: flex;
+
+  .pageItem {
+    background-color: #eee;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 4px;
+    color: #333;
+    font-size: 11px;
+    font-weight: bold;
+
+    &.active {
+      background-color: cadetblue;
+    }
+  }
 `;
-export const page = css`
-  background-color: #f00;
-`;
+
 export const SearchItem = styled.div`
   background-color: #eee;
   flex: 1 1 18%;

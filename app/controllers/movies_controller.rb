@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  require 'json'
+
   def index
   end
 
@@ -24,10 +26,14 @@ class MoviesController < ApplicationController
 
     res = Net::HTTP.get_response(uri)
 
-    @result = res.is_a?(Net::HTTPSuccess) ? res.body : {error: "no result"}
+    @result = JSON.parse res.body
+    @result[:title] = title
+    @result[:year] = year
+    @result[:page] = page
+    @result[:type] = type
 
     respond_to do |format|
-      format.json { render :json => @result }
+      format.json { render :json => @result.to_json }
       format.html
     end
   end
