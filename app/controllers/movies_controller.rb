@@ -7,8 +7,6 @@ class MoviesController < ApplicationController
 
     return nil if !query
 
-    byebug
-
     uri = URI(Rails.application.config.omdb_url)
     parameters = { :apikey => Rails.application.config.omdb_key, :s => query }
     uri.query = URI.encode_www_form(parameters)
