@@ -73,4 +73,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # OMDB settings
+  config.omdb_url = "http://www.omdbapi.com/"
+  config.omdb_key = "36cefce"
+
 end
