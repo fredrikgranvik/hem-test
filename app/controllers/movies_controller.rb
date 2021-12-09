@@ -3,5 +3,6 @@ class MoviesController < ApplicationController
   end
 
   def search
+    byebug
   end
 end
