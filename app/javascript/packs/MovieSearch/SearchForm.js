@@ -18,24 +18,27 @@ const SearchForm = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+    const path = ["search", "omdb", title, type, year]
+      .filter((e) => e)
+      .join("/");
 
-    fetch("/search/" + title + "/" + type + "/" + year, {
+    fetch(`/${path}`, {
       method: "GET",
       headers: new Headers({ "content-type": "application/json" }),
     })
       .then((res) => res.json())
       .then((data) => {
-        handleResponse(data);
+        handleResponse(data, path);
       });
   };
 
-  const handleResponse = (data) => {
+  const handleResponse = (data, path) => {
     context.setResult(data);
-    updatePath();
+    updatePath(path);
   };
 
-  const updatePath = () => {
-    window.history.replaceState({}, "", `/search/${title}/${type}/${year}`);
+  const updatePath = (path) => {
+    window.history.replaceState({}, "", `/${path}`);
   };
 
   return (
@@ -44,7 +47,7 @@ const SearchForm = () => {
         <input
           className={SearchInput}
           type="search"
-          value={title}
+          value={title || ""}
           name="searchQuery"
           placeholder="Search for title..."
           onChange={(e) => context.setTitleQuery(e.target.value)}
@@ -62,7 +65,7 @@ const SearchForm = () => {
         <input
           className={YearInput}
           type="text"
-          value={year}
+          value={year || ""}
           name="yearQuery"
           placeholder="Year"
           onChange={(e) => context.setYearQuery(e.target.value)}
