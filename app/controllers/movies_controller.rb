@@ -33,8 +33,8 @@ class MoviesController < ApplicationController
     @result[:type] = type
 
     respond_to do |format|
-      format.json { render :json => @result.to_json }
       format.html
+      # format.json { render :json => @result.to_json }
     end
   end
 end

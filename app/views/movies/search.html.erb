@@ -1,3 +1,18 @@
-<div id="MovieSearchInitialState" data-initial-state="<%= @result.to_json %>"></div>
+<%
+=begin%>
+ <div id="MovieSearchInitialState" data-initial-state="<%= @result.to_json %>"></div>
 
 <%= javascript_pack_tag 'movie_search' %>
+<%
+
+=end%>
+
+<%= render partial: "search_form" %>
+
+<div class="result">
+    <%= render "paginate" %>
+
+    <% @result["Search"].each do |m| %>
+        <%= render partial: "movie", locals: {movie: m} %>
+    <% end %>
+</div>

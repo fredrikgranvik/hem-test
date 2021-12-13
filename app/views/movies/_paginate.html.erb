@@ -1,0 +1,6 @@
+<% pages = @result["totalResults"].to_i / 10 %>
+<% pages = pages.ceil %>
+
+<% pages.times do |p| %>
+    <%= link_to p+1, params.merge(page: p+1).permit(:page) %>
+<% end %>

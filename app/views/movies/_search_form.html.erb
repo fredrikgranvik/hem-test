@@ -1,0 +1,16 @@
+<%
+    typeCollection = [
+        ["movie", "movie"],
+        ["series", "series"],
+        ["episode", "episode"]
+    ]
+%>
+
+<div class="SearchArea">
+    <%= form_tag(search_path, method: "get", class: "searchForm") do |f| %>
+        <%= search_field_tag('search', "", placeholder: "search movie..", class: "SearchInput") %>
+        <%= select_tag("type", options_for_select(typeCollection), {class: "SearchType"})%>
+        <%= text_field_tag('year', "", placeholder: "year", class: "YearInput") %>
+        <%= submit_tag('Submit', class: "SearchSubmit") %>
+    <% end %>
+</div>
