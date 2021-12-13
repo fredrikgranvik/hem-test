@@ -20,6 +20,10 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-flow": "^7.16.0",
+    "flow-bin": "^0.167.1",
     "webpack-dev-server": "^3"
   }
 }
